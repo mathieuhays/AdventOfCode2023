@@ -3,12 +3,16 @@ package main
 import (
 	"AdventOfCode2023/internals/io"
 	"bufio"
+	"fmt"
 	"log"
 	"os"
 	"strconv"
+	"time"
 )
 
 func main() {
+	start := time.Now()
+
 	if len(os.Args) != 3 {
 		log.Fatal("Usage: cmd <part:1,2> <input_file>")
 	}
@@ -43,6 +47,8 @@ func main() {
 	} else {
 		log.Fatalln("Unexpected use case")
 	}
+
+	fmt.Printf("Executed in %v\n", time.Now().Sub(start))
 }
 
 func processPart1(scanner *bufio.Scanner) {
