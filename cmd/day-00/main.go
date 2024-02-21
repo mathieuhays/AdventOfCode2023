@@ -1,7 +1,6 @@
 package main
 
 import (
-	"AdventOfCode2023/internals/io"
 	"bufio"
 	"fmt"
 	"log"
@@ -30,11 +29,6 @@ func main() {
 	readFile, err := os.Open(inputPath)
 	if err != nil {
 		log.Fatalf("Input file fatal error: %v", err)
-	}
-
-	lineCount, err := io.LineCount(readFile)
-	if err != nil {
-		log.Fatalf("Error processing line count: %v", lineCount)
 	}
 
 	fileScanner := bufio.NewScanner(readFile)
