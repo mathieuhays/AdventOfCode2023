@@ -228,7 +228,9 @@ func processPart2(scanner *bufio.Scanner) {
 
 	// correct answer: 31161857
 	// currently takes 2m51 to process
+
 	// @TODO improve efficiency of part 2
-	// Check for better way to process seeds vs conversion maps
-	// use go routines with channels
+	// - Check for better way to process seeds vs conversion maps
+	// - Try to order seed ranges and conversion maps to be able to bail early
+	// - Try go routines with channels
 }
