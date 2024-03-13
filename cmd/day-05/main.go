@@ -59,10 +59,10 @@ func extractNumbers(source string) []int {
 	return out
 }
 
-func calculateLocation(seed int, conversionMaps *[][]day5.ConversionMap) int {
+func calculateLocation(seed int, conversionMaps [][]day5.ConversionMap) int {
 	number := seed
 
-	for _, conversionMapCollection := range *conversionMaps {
+	for _, conversionMapCollection := range conversionMaps {
 		for _, conversionMap := range conversionMapCollection {
 			if conversionMap.InRange(number) {
 				n, err := conversionMap.Convert(number)
@@ -136,7 +136,7 @@ func processPart1(scanner *bufio.Scanner) {
 	minLocation := -1
 
 	for _, seed := range seeds {
-		number := calculateLocation(seed, &maps)
+		number := calculateLocation(seed, maps)
 
 		// number should now represent the location
 		if minLocation == -1 {
@@ -212,10 +212,11 @@ func processPart2(scanner *bufio.Scanner) {
 		s := seeds[i]
 		l := seeds[i+1]
 
-		for x := s; x < s+l; x++ {
-			number := calculateLocation(x, &maps)
+		fmt.Printf("Seed range: s:%v l:%v\n", s, l)
 
-			// number should now represent the location
+		for x := s; x < s+l; x++ {
+			number := calculateLocation(x, maps)
+
 			if minLocation == -1 {
 				minLocation = number
 			} else if minLocation > number {
@@ -231,6 +232,6 @@ func processPart2(scanner *bufio.Scanner) {
 
 	// @TODO improve efficiency of part 2
 	// - Check for better way to process seeds vs conversion maps
-	// - Try to order seed ranges and conversion maps to be able to bail early
-	// - Try go routines with channels
+	// - Try to order seed ranges and conversion maps to be able to bail early -- seems slower (3m+)
+	// - Try go routines with channels -- slower, took 6m
 }
