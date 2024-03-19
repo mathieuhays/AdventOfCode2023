@@ -32,4 +32,4 @@
 
 ## Improve Efficiency
 
-- [ ] Day 5, Part 2
+- [x] Day 5, Part 2
