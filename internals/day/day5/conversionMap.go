@@ -1,16 +1,19 @@
 package day5
 
-import "errors"
+import (
+	"errors"
+)
 
 type ConversionMap struct {
 	DestinationStart int
 	SourceStart      int
 	Size             int
+	SourceEnd        int
 }
 
 func (c *ConversionMap) InRange(seed int) bool {
 	return seed >= c.SourceStart &&
-		seed < c.SourceStart+c.Size
+		seed <= c.SourceEnd
 }
 
 func (c *ConversionMap) Convert(seed int) (int, error) {
